@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import classes from './Login.module.css';
+import { UserContext } from "./UserContext";
 
 const Login = () => {
+    const navigate = useNavigate();
     const [UserEmail, setUserEmail] = useState('');
     const [user, setUser] = useState([]);
 
@@ -12,18 +15,28 @@ const Login = () => {
                 const response = await axios.get('https://jsonplaceholder.typicode.com/users');
                 setUser(response.data);
             } catch (error) {
+                console.log('error: ', error);
 
             }
         }
         fetchData();
     }, [])
 
-    const emailChecker = () => {
-        
-    }
-
-    const prevForm = (event) => {
+    const emailChecker = (event) => {
         event.preventDefault();
+        const data = user.find(data => data.email === UserEmail)
+        console.log('data: ', data);
+        try {
+            if (data !== undefined) {
+                localStorage.setItem('users', JSON.stringify(data))
+                navigate('/Posts');
+            } else {
+                throw 'Email not valid ';
+            }
+        } catch (error) {
+            error1.innerHTML = error;
+        }
+
     }
     const emailInput = (event) => {
         setUserEmail(event.target.value);
@@ -32,7 +45,7 @@ const Login = () => {
     return (
         <div className={classes.mainAll}>
             <h1>Log In</h1>
-            <form onSubmit={prevForm}>
+            <form onSubmit={emailChecker}>
                 <input type="text" placeholder="jane@example.com" className={classes.emailInput} onChange={emailInput} />
                 <input type="password" className={classes.passInput} />
                 <p id='error1'></p>
