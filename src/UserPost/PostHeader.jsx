@@ -1,7 +1,7 @@
 import React from "react";
 import classes from './UserPost.module.css'
 const PostHeader = () => {
-    
+
     return (
         <div className={classes.main}>
             <h6 id={classes.top}>Discover</h6>

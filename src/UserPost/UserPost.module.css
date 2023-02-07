@@ -39,7 +39,7 @@
 
 }
 
-.main section h1 {
+section .name {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
@@ -48,7 +48,7 @@
     padding-left: 2.0625rem;
 }
 
-.main section h4 {
+section .userName {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -59,7 +59,7 @@
 
 }
 
-.main section p {
+.main section .postStyle {
     min-width: 21.375rem;
     min-height: 6.25rem;
     font-family: 'Roboto';
@@ -189,7 +189,8 @@
 #edimg {
     position: absolute;
 }
-#sss{
+
+#sss {
     position: absolute;
     left: 3.25rem;
 
