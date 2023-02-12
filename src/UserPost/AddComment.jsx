@@ -1,20 +1,15 @@
 import React from "react";
-
-const AddComment = (props) => {
-    const AddComment = props.AddComment;
-    console.log('props: ', props);
-
-return(
-    <section>
-        <h1>{props.name}</h1>
-        <img></img>
-        <h4>{props.username}</h4>
-        <p></p>
-    </section>
-);
+import classes from './UserPost.module.css'
 
 
-
+const AddCommentForPost = ({ comment, name, userName }) => {
+    return (
+        <section>
+            <h1 className={classes.name}>{name}</h1>
+            <img src="../pc.svg" id={classes.edimg}></img>
+            <h4 className={classes.userName}>{`@ ${userName}`}</h4>
+            <p className={classes.postStyle}>{comment}</p>
+        </section>
+    )
 }
-
-export default AddComment;
+export default AddCommentForPost;
