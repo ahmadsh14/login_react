@@ -18,6 +18,9 @@ const UserPost = () => {
     const [selectedPost, setSelectedPost] = useState(null);
     const [show, setShow] = useState(false);
 
+    const [showMore, setshowMore] = useState(5);
+    const [inputText, setInputText] = useState("");
+
 
     useEffect(() => {
 
@@ -59,17 +62,32 @@ const UserPost = () => {
     const handleClick = () => {
         setShow(!show);
     };
+    const SearchUserInput = (event) => {
+        setInputText(event.target.value)
+
+
+    }
+
+    const filteredData = user.filter((post) =>
+        post.body.toLowerCase().includes(inputText.toLowerCase())
+    )
+
+    const LoadMore = () => {
+        setshowMore((prevValue) => prevValue + 5)
+    }
     return (
         <div>
             <PostHeader headerTitle="Discover" subtitle="What's new today" />
-
+            <div className={classes.searchBarMain}>
+                <input placeholder="Search..." type='text'className={classes.searchBar} onChange={SearchUserInput} />
+            </div>
             <div className={classes.main}>
 
                 {posts.map((add, index) => (
                     <AddNewPostTest key={index} bodyPost={add} nameAddPost={postda.name} userNameAddPost={postda.username} />
                 ))}
 
-                {user.map((post) =>
+                {filteredData.slice(0,showMore).map((post) =>
                     <section key={post.body}>
                         <img src="../pc.svg" id={classes.edimg}></img>
                         <h1 className={classes.name}>{postda.name}</h1>
@@ -93,6 +111,10 @@ const UserPost = () => {
                     </div>
                 </div>
             )}
+            <div className={classes.mianLoadMore}>
+                <button className={classes.loadMore} onClick={LoadMore}>Load More</button>
+            </div>
+
             <div className={classes.posbut}>
                 <hr />
                 <button id="firstpo" onClick={handleClick}>+</button>

@@ -197,3 +197,29 @@ section .userName {
     left: 3.25rem;
 
 }
+
+.mianLoadMore {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1.25rem;
+
+}
+
+.loadMore{
+    padding: 10px 24px;
+}
+
+.searchBarMain {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.searchBar{
+    border: 1px solid grey;
+    border-radius: 5px;
+    height: 20px;
+    padding: 2px 23px 2px 30px;
+    outline: 0;
+    background-color: #f5f5f5;
+}

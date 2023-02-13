@@ -44,7 +44,7 @@ const Login = () => {
         <div className={classes.mainAll}>
             <h1>Log In</h1>
             <form onSubmit={emailChecker}>
-                <input type="text" placeholder="jane@example.com" className={classes.emailInput} onChange={emailInput} />
+                <input type="email" placeholder="jane@example.com" className={classes.emailInput} onChange={emailInput} />
                 <input type="password" className={classes.passInput} />
                 <p id='error1'></p>
                 <input type="submit" value='Log in' className={classes.btn} />
